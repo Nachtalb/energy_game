@@ -1,3 +1,10 @@
+# Jetbrains
+.idea/
+
+# Energy Game
+*.log
+game.html
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
