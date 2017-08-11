@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.2] - 2017-08-11
+### Changed
+- fixed link location in this file
+
 ## [1.1.1] - 2017-08-11
 ### Changed
 - explained the installation process better
@@ -24,6 +28,7 @@ it caused errors
 ## [1.0.0] - 2017-08-11
 
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...HEAD
-[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/Nachtalb/energy_game/compare/v1.1.0...HEAD
+[1.1.2]: https://github.com/Nachtalb/energy_game/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/Nachtalb/energy_game/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/Nachtalb/energy_game/compare/v1.0.0...v1.1.0
