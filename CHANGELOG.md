@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.1] - 2017-08-11
+### Changed
+- explained the installation process better
+- only use bs4 in the requirements.txt becaused on other systems than mac osx
+it caused errors
+
 ## [1.1.0] - 2017-08-11
 ### Added
 - Additional information in the README.md
@@ -19,4 +25,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 [Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...HEAD
+[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0

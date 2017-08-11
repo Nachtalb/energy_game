@@ -4,19 +4,29 @@ Bot for [game.energy.ch](https://game.energy.ch) by [@Nachtalb](https://github.c
 
 ## Usage
 
-1. Make a virtualenv
+Make sure you have python 3.6 or higher installed.
+
+1. Clone and cd to the git repo
+    ```
+    $ git clone https://github.com/Nachtalb/energy_game.git [some path]
+    $ cd [some path]
+    ```
+
+2. Make a virtualenv
     ```
     $ virtualenv -p python3.6 [your venv name]
     ```
-2. Start virtualenv
+    If `python3.6` does not work, locate the your python3.6 executable and
+    use this path instead.
+3. Start virtualenv
     ```
     $ source [your venv name]/bin/activate
     ```
-2. Install requirements
+4. Install requirements
     ```
     $ pip install -r requirements.txt
     ```
-3. Use the app
+5. Use the app
     ```
     usage: main.py [-h] [-s {skip,random,normal}] [-a] phone_number
 
@@ -34,6 +44,8 @@ Bot for [game.energy.ch](https://game.energy.ch) by [@Nachtalb](https://github.c
 #### Example
 
 ```
+$ git clone https://github.com/Nachtalb/energy_game.git ~/projects/energy_game
+$ cd ~/projects/energy_game
 $ virtualenv -p python3.6 venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
@@ -51,7 +63,7 @@ $ python main.py 0491570156 -a -s random
 
 I know that some answers are wrong. If you know which or some questions were not added yet please make an issue or a pull request.
 
-## Compatibility 
+## Compatibility
 
 [game.energy.ch](https://game.energy.ch) 2017
 
