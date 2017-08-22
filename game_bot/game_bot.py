@@ -143,17 +143,21 @@ class GameBot:
                                                            if answer.text.strip() != random_answer]
                     questions_answers[question_text].append("* " + random_answer)
         else:
-            if self.current_site.soup.select('#mood-bad'):
-                self.logger.warning('Game Over: Some off the questions were false. See error.log for further info.')
-                error_logger = new_logger('AnswerWrong', self.error_log_path, console_logger=False)
-                error_logger.warning('Some of these answers were wrong:')
-                for item in questions_answers:
-                    error_logger.warning(item)
-            if self.current_site.soup.select('#mood-good'):
-                self.logger.info('You made it through the quiz. Now a random number will be drawn.')
-                self.load_html(post={'site': 'win'})
-                self.load_html(get={'ticket': randint(0, 11)})
-                if self.current_site.soup.select('[src=images/esff_ticket_wrong.png]'):
-                    self.logger.warning('Sadly you did not win anything this round.')
-                else:
-                    self.logger.warning('YES congratulations you have won look at your phone if you got the sms.')
+            self.questions_finished(questions_answers)
+
+    def questions_finished(self, questions_answers):
+        if self.current_site.soup.select('#mood-bad'):
+            self.logger.warning('Game Over: Some off the questions were false. See error.log for further info.')
+            error_logger = new_logger('AnswerWrong', self.error_log_path, console_logger=False)
+            error_logger.warning('Some of these answers were wrong:')
+            for item in questions_answers:
+                error_logger.warning(item)
+
+        elif self.current_site.soup.select('#mood-good'):
+            self.logger.info('You made it through the quiz. Now a random number will be drawn.')
+            self.load_html(post={'site': 'win'})
+            self.load_html(get={'ticket': randint(0, 11)})
+            if self.current_site.soup.select('[src=images/esff_ticket_wrong.png]'):
+                self.logger.warning('Sadly you did not win anything this round.')
+            else:
+                self.logger.warning('YES congratulations you have won look at your phone if you got the sms.')
