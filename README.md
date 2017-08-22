@@ -62,6 +62,9 @@ $ python main.py 0491570156 -a -s random
 ## Contributions
 
 I know that some answers are wrong. If you know which or some questions were not added yet please make an issue or a pull request.
+For any other contributions follow the code style of this project.
+Those are:
+- [Pep8](https://www.python.org/dev/peps/pep-0008/) with the exception of a line length of 120 characters
 
 ## Compatibility
 

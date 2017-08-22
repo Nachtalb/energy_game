@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2017-08-22
+### Added
+- New issue template
+- New pull request template
+- Code styling information to Contributions in README
+
 ## [1.2.0] - 2017-08-22
 ### Added
 - Handle server errors
@@ -37,6 +43,7 @@ it caused errors
 
 
 [Unreleased]: https://github.com/Nachtalb/energy_game/compare/v1.1.0...HEAD
+[1.3.0]: https://github.com/Nachtalb/energy_game/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Nachtalb/energy_game/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/Nachtalb/energy_game/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/Nachtalb/energy_game/compare/v1.1.0...v1.1.1
