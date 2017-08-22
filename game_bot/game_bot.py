@@ -104,7 +104,7 @@ class GameBot:
         write_file(self.questions_path, json.dumps(self.question_mapping, ensure_ascii=0, indent=4, sort_keys=1))
 
     def questioning(self):
-        questions_answers = []
+        questions_answers = {}
         while self.current_site.soup.select('form.question h1'):
             if self.skip:
                 break
@@ -114,9 +114,13 @@ class GameBot:
 
             for item in self.question_mapping:
                 if question_text == item['question']:
+                    questions_answers[question_text] = \
+                        [answer.text.strip() for answer in label_tags
+                         if answer.text.strip() != item['answer']]
+
                     for label_tag in label_tags:
                         if label_tag.text.strip() == item['answer']:
-                            questions_answers.append((item['question'], item['answer']))
+                            questions_answers[question_text].append("* " + item['answer'])
                             value = label_tag.find_previous_sibling('input')['value'].strip()
                             self.logger.info('Question: %s, Answer: %s', item['question'], item['answer'])
                             self.load_html({'question': value})
@@ -135,7 +139,11 @@ class GameBot:
                     random = randint(1, 3)
                     self.logger.warning('Question is unknown, take random value - question: %s, answer: %s',
                                         question_text, label_tags[random - 1].text)
+                    random_answer = label_tags[random - 1].text.strip()
                     self.load_html({'question': random})
+                    questions_answers[question_text] = [answer.text.strip() for answer in label_tags
+                                                           if answer.text.strip() != random_answer]
+                    questions_answers[question_text].append("* " + random_answer)
         else:
             if self.current_site.soup.select('#mood-bad'):
                 self.logger.warning('Game Over: Some off the questions were false. See error.log for further info.')
