@@ -127,19 +127,17 @@ class GameBot:
                             break
                     break
             else:
+                self.logger.warning('Question unknown, %s', self.skip_unknown)
                 if self.skip_unknown == 'normal':
-                    self.logger.warning('No entry for question available.')
                     self.ev.notify(
                         events.AddQuestionEvent(question=question_text, answers=[label.text for label in label_tags]))
                 elif self.skip_unknown == 'skip':
-                    self.logger.warning('Question is unknown, skip question')
                     self.skip = True
                     break
                 elif self.skip_unknown == 'random':
                     random = randint(1, 3)
-                    self.logger.warning('Question is unknown, take random value - question: %s, answer: %s',
-                                        question_text, label_tags[random - 1].text)
                     random_answer = label_tags[random - 1].text.strip()
+                    self.logger.warning('Random value - question: %s, answer: %s', question_text, random_answer)
                     self.load_html({'question': random})
                     questions_answers[question_text] = [answer.text.strip() for answer in label_tags
                                                            if answer.text.strip() != random_answer]
