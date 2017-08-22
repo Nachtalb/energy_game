@@ -56,12 +56,15 @@ class GameBot:
 
     def start(self):
         while self.ongoing:
-            self.logger.info('Start GameBot with - phone number: %s, skip: %s', self.phone_number, self.skip_unknown)
-            self.set_url_opener()
-            self.set_cookie()
-            self.load_html({'mobile': self.phone_number})
-            self.questioning()
-            self.skip = False
+            try:
+                self.logger.info('Start GameBot with - phone number: %s, skip: %s', self.phone_number, self.skip_unknown)
+                self.set_url_opener()
+                self.set_cookie()
+                self.load_html({'mobile': self.phone_number})
+                self.questioning()
+                self.skip = False
+            except urllib.error.HTTPError:
+                self.logger.warning('Server had an error, restarting quiz.')
 
     def set_url_opener(self):
         self.logger.debug('Setting URL Opener')
