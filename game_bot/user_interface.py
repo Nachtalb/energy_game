@@ -21,6 +21,8 @@ class CommandLineInterface:
                 self.ev.notify(events.StartEvent())
             else:
                 self.init()
+        elif isinstance(event, events.StartEvent):
+            self.wait_for_input()
         elif isinstance(event, events.QuitEvent):
             print('Goodbye')
         elif isinstance(event, events.WonEvent):
@@ -87,3 +89,17 @@ class CommandLineInterface:
 
         self.ev.notify(events.AddQuestionEvent(question=question, answers=[answer], choice=0))
         self.main_menu()
+
+    def wait_for_input(self):
+        commands = [
+            ('m', 'main menu', self.main_menu),
+            ('q', 'quit', lambda s=self: s.ev.notify(events.QuitEvent()))
+        ]
+        while True:
+            input_ = input('Available commands %s and hit enter. \n' %
+                           ''.join(['"{}"={}'.format(command[0], command[1]) for command in commands]))
+            actions = [command[2] for command in commands if input_ == command[0]]
+            if actions:
+                actions[0]()
+                break
+

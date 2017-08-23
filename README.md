@@ -43,6 +43,11 @@ $ python main.py 0491570156 -a -s random -c 4
 
 ## Usage
 
+You can also use some commands on the run. Type the corresponding letter and hit <kbd>enter</kbd>.
+
+- `m` to open the main menu
+- `q` to quit the game
+
 ```
 usage: main.py [-h] [-s {skip,random,normal}] [-a] phone_number
 
