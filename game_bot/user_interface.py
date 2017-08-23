@@ -53,6 +53,7 @@ class CommandLineInterface:
                 return item
 
     def main_menu(self):
+        self.ev.notify(events.PauseEvent())
         items = [
             CLIListItem(title='Start', identifier='s', value=events.StartEvent),
             CLIListItem(title='Add Question', identifier='a', value=events.AddQuestionEvent),

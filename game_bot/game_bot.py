@@ -79,6 +79,8 @@ class BotThread(threading.Thread):
     STATE_LOADING = 1
     STATE_QUESTIONING = 2
     STATE_STOPPED = 3
+    STATE_PAUSED = 4
+
 
     def __init__(self, name: str, event_handler: EventHandler, phone_number: str, question_mapping: list,
                  unknown_action: int=None):
@@ -106,14 +108,16 @@ class BotThread(threading.Thread):
         if this_bot:
             if isinstance(event, events.AddQuestionEvent) and event.choice == 'skip':
                 self.skip_current_game = True
-        elif isinstance(event, events.StartEvent):
+        elif isinstance(event, events.StartEvent) and self.state in [self.STATE_UNLOADED, self.STATE_PAUSED]:
             self.start_game()
         elif isinstance(event, events.QuitEvent):
             self.stop()
+        elif isinstance(event, events.PauseEvent):
+            self.state = self.STATE_PAUSED
 
     def start_game(self):
         self.state = self.STATE_LOADING
-        while self.state != self.STATE_STOPPED:
+        while self.state not in [self.STATE_STOPPED, self.STATE_PAUSED]:
             try:
                 self.logger.info('Start GameBot with - phone number: %s', self.phone_number)
                 self.set_url_opener()

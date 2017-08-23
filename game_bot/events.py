@@ -33,3 +33,7 @@ class GameOverEvent(Event):
 
 class InitEvent(Event):
     name = 'init_event'
+
+
+class PauseEvent(Event):
+    name = 'pause_event'
