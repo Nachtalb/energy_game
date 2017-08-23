@@ -3,7 +3,7 @@ import logging
 import sys
 
 
-def new_logger(name: str, filepath: str, console_logger:bool=True, file_logger: bool=True):
+def new_logger(name: str, filepath: str=None, console_logger:bool=True, file_logger: bool=True):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -14,7 +14,8 @@ def new_logger(name: str, filepath: str, console_logger:bool=True, file_logger: 
         console_handler.setFormatter(formatter)
         logger.addHandler(console_handler)
 
-    if file_logger and not [handler for handler in logger.handlers if type(handler) == logging.FileHandler]:
+    if file_logger and filepath and \
+            not [handler for handler in logger.handlers if type(handler) == logging.FileHandler]:
         file_handler = logging.FileHandler(filepath)
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(formatter)

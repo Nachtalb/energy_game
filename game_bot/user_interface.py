@@ -30,7 +30,7 @@ class CommandLineInterface:
             print('GameOver :(')
             self.ev.notify(events.StartEvent())
         elif isinstance(event, events.AddQuestionEvent) and event.choice is None:
-            self.add_question(event.question, event.answers)
+            self.add_question(event.question, event.answers, bot_name=event.bot_name)
 
     def init(self):
         self.main_menu()
@@ -63,7 +63,7 @@ class CommandLineInterface:
         else:
             self.ev.notify(choice.value())
 
-    def add_question(self, question: str=None, answers: list=None):
+    def add_question(self, question: str=None, answers: list=None, bot_name: str=None):
         items = [
             CLIListItem(title=answers[0], identifier='a', value=0),
             CLIListItem(title=answers[1], identifier='b', value=1),
@@ -72,7 +72,8 @@ class CommandLineInterface:
         ]
 
         choice = self.list_with_title('Questions: %s' % question, items)
-        self.ev.notify(events.AddQuestionEvent(question=question, answers=answers, choice=choice.value))
+        self.ev.notify(events.AddQuestionEvent(question=question, answers=answers, choice=choice.value,
+                                               bot_name=bot_name))
 
     def ask_for_question(self):
         question, answer = None, None

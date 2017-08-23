@@ -13,10 +13,11 @@ class QuitEvent(Event):
 class AddQuestionEvent(Event):
     name = 'add_question'
 
-    def __init__(self, question: str, answers: list, choice: int=None):
+    def __init__(self, question: str, answers: list, choice: int=None, bot_name: str=None):
         self.question = question
         self.answers = answers
         self.choice = choice
+        self.bot_name = choice
 
 
 class WonEvent(Event):

@@ -39,6 +39,7 @@ Make sure you have python 3.6 or higher installed.
                             Skip unknown questions, answer them randomly or wait
                             for input (default).
       -a, --autostart       Autostart the quize, default False
+      -c, --bot-amount      Amount of bots to start (default 1)
     ```
 
 #### Example
@@ -50,14 +51,14 @@ $ virtualenv -p python3.6 venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 
-$ python main.py 0491570156 -a -s random
+$ python main.py 0491570156 -a -s random -c 4
 ```
 
 ## ToDo
 
 - [ ] Pause bot
 - [ ] Change settings interface
-- [ ] Add multithreading to make multiple bot instances without the need to start the app multiple times
+- [x] Add multithreading to make multiple bot instances without the need to start the app multiple times
 
 ## Contributions
 
