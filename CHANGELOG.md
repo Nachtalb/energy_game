@@ -5,10 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
 - Add multithreading, use `-c x`, where `x` is your desired bot amount
-- Move installation part of usage to own section in readme
 - Add on the run commands
 - Pause the current game
+
+### Changed
+- Move installation part of usage to own section in readme
 
 ## [1.3.1] - 2017-08-23
 ### Changed
