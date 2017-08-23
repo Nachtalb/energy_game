@@ -42,7 +42,8 @@ class BotManager:
     def notify(self, event):
         if isinstance(event, events.StartEvent):
             for i in range(self.bot_amount):
-                bot_name = 'bot-' + str(i)
+                bot_name = 'bot-{:0>' + str(len(str(self.bot_amount))) + '}'
+                bot_name = bot_name.format(i)
                 self.threads[bot_name] = threading.Timer(
                     1,
                     lambda s=self, name=bot_name:
