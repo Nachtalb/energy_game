@@ -2,7 +2,8 @@
 
 Bot for [game.energy.ch](https://game.energy.ch) by [@Nachtalb](https://github.com/Nachtalb).
 
-## Usage
+
+## Installation
 
 Make sure you have python 3.6 or higher installed.
 
@@ -26,21 +27,7 @@ Make sure you have python 3.6 or higher installed.
     ```
     $ pip install -r requirements.txt
     ```
-5. Use the app
-    ```
-    usage: main.py [-h] [-s {skip,random,normal}] [-a] phone_number
-
-    positional arguments:
-      phone_number          The phone number to send the "you have won" sms to
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      -s {skip,random,normal}, --skip {skip,random,normal}
-                            Skip unknown questions, answer them randomly or wait
-                            for input (default).
-      -a, --autostart       Autostart the quize, default False
-      -c, --bot-amount      Amount of bots to start (default 1)
-    ```
+The app is now installed and you can use it as described in the [usage](#usage) section.
 
 #### Example
 
@@ -52,6 +39,23 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 
 $ python main.py 0491570156 -a -s random -c 4
+```
+
+## Usage
+
+```
+usage: main.py [-h] [-s {skip,random,normal}] [-a] phone_number
+
+positional arguments:
+  phone_number          The phone number to send the "you have won" sms to
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s {skip,random,normal}, --skip {skip,random,normal}
+                        Skip unknown questions, answer them randomly or wait
+                        for input (default).
+  -a, --autostart       Autostart the quize, default False
+  -c, --bot-amount      Amount of bots to start (default 1)
 ```
 
 ## ToDo
