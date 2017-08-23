@@ -127,6 +127,8 @@ class BotThread(threading.Thread):
                 self.skip_current_game = False
             except urllib.error.HTTPError as e:
                 self.logger.warning('%s, restarting quiz.' % str(e))
+            except urllib.error.URLError as e:
+                self.logger.warning('%s, restarting quiz.' % str(e))
 
     def stop(self):
         self.state = self.STATE_STOPPED
