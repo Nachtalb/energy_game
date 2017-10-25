@@ -7,26 +7,23 @@ Bot for [game.energy.ch](https://game.energy.ch) by [@Nachtalb](https://github.c
 
 Make sure you have python 3.6 or higher installed.
 
-1. Clone and cd to the git repo
-    ```
-    $ git clone https://github.com/Nachtalb/energy_game.git [some path]
-    $ cd [some path]
-    ```
+Clone and cd to the git repo
+```bash
+$ git clone https://github.com/Nachtalb/energy_game.git [some path]
+$ cd [some path]
+```
 
-2. Make a virtualenv
-    ```
-    $ virtualenv -p python3.6 [your venv name]
-    ```
-    If `python3.6` does not work, locate the your python3.6 executable and
-    use this path instead.
-3. Start virtualenv
-    ```
-    $ source [your venv name]/bin/activate
-    ```
-4. Install requirements
-    ```
-    $ pip install -r requirements.txt
-    ```
+Instead of the old `pip` with `requirements.txt` I use the new and fancy `pipenv` with `pipfile`. If you read the intro
+to [pipenv](https://github.com/pypa/pipfile) and [pipfile](https://docs.pipenv.org) you will understand why I use it.
+
+With this info we now install our virtualenv with:
+```bash
+$ pip install pipenv  # Install pipenv
+$ pipenv --three      # Create virtualeenv from your python3 installation
+$ pipenv install      # Install all requirements
+$ pipenv shell        # Spawn shell for your pipenv virtualenv
+```
+
 The app is now installed and you can use it as described in the [usage](#usage) section.
 
 #### Example
@@ -34,9 +31,10 @@ The app is now installed and you can use it as described in the [usage](#usage) 
 ```
 $ git clone https://github.com/Nachtalb/energy_game.git ~/projects/energy_game
 $ cd ~/projects/energy_game
-$ virtualenv -p python3.6 venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
+$ pip install pipenv
+$ pipenv --three
+$ pipenv install
+$ pipenv shell
 
 $ python main.py 0491570156 -a -s random -c 4
 ```
