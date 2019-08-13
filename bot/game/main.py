@@ -34,7 +34,7 @@ class EnergySession:
             'mobile': mobile,
         }
 
-        response = self.post(endpoint=endpoint, data=data)
+        response = self._request(endpoint=endpoint, data=data, method='POST')
         return json.load(response)
 
     def check_login(self) -> bool:
@@ -47,8 +47,7 @@ class EnergySession:
             'mobile': mobile,
         }
 
-        response = self.put(endpoint=endpoint, data=data)
-        response_data = json.load(response)
+        response_data = self._request(endpoint=endpoint, data=data, method='PUT')
 
         self.token = response_data.get('token')
         return bool(self.token)
@@ -60,35 +59,19 @@ class EnergySession:
         query = urlencode(parameters or {})
         return urlunsplit((self.protocol, self.base_url, f'{self.api_root}/{endpoint}', query, ''))
 
-    def _request(self, request: Request) -> HTTPResponse:
-        request.origin_req_host=f'{self.protocol}://{self.base_url}'
+    def _request(self, *, endpoint: str, data: Dict = None, params: Dict = None, method: str = None) -> Dict:
+        method = method or 'GET'
+
+        url = self._build_url(endpoint, params)
+
+        encoded_data = urlencode(data).encode()
+        request = Request(url, method=method, data=encoded_data)
+
+        request.origin_req_host = f'{self.protocol}://{self.base_url}'
         self.last_response = self.session.open(request)
         self.cookie_jar.save()
-        return self.last_response
 
-    def get(self, *, endpoint: str, data: Dict = None) -> HTTPResponse:
-        url = self._build_url(endpoint, data)
-
-        get_request = Request(url, method='GET')
-        return self._request(get_request)
-
-    def post(self, *, endpoint: str, data: Dict = None) -> HTTPResponse:
-        url = self._build_url(endpoint)
-
-        encoded = urlencode(data).encode()
-
-        get_request = Request(url, method='POST', data=encoded)
-        return self._request(get_request)
-
-
-    def put(self, *, endpoint: str, data: Dict = None) -> HTTPResponse:
-        url = self._build_url(endpoint)
-
-        encoded = urlencode(data).encode()
-
-        get_request = Request(url, method='PUT', data=encoded)
-        return self._request(get_request)
-
+        return json.load(self.last_response)
 
 class Operator:
     def __init__(self, session: EnergySession):
