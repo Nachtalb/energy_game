@@ -37,8 +37,8 @@ class EnergySession:
 
 
 class Operator:
-    def __init__(self):
-        self.session = EnergySession()
+    def __init__(self, session: EnergySession):
+        self.session = session
 
     @property
     def logged_in(self):
@@ -53,7 +53,8 @@ class Operator:
 
 class Menu:
     def __init__(self):
-        self.operator = Operator()
+        self.session = EnergySession()
+        self.operator = Operator(self.session)
         self.tel = ''
 
     def menu_item(self, name: str, type: str, text: str, **kwargs) -> List[Dict]:
