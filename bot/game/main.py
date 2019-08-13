@@ -15,10 +15,10 @@ from bot.game.utils import draw_banner
 class EnergySession:
     def __init__(self):
         cookie_file = Path(getcwd()) / 'cookies.txt'
-        cookie_jar = MozillaCookieJar(str(cookie_file))
-        cookie_jar.load()
+        self.cookie_jar = MozillaCookieJar(str(cookie_file))
+        self.cookie_jar.load()
 
-        self.session = request.build_opener(request.HTTPCookieProcessor(cookie_jar))
+        self.session = request.build_opener(request.HTTPCookieProcessor(self.cookie_jar))
 
     def check_login(self) -> bool:
         pass
@@ -46,6 +46,9 @@ class Operator:
             self.session.check_login()
         except URLError:
             return False
+
+    def save(self):
+        self.session.cookie_jar.save()
 
 
 class Menu:
@@ -76,8 +79,14 @@ class Menu:
         entries = self.menu_item('next', 'list', 'What do you want to do?', choices=options.keys())
 
         answer = prompt(entries)
-        method = options.get(answer['next'])
+        method = options.get(answer.get('next'))
+        if not method:
+            self.exit()
+            return
         method()
+
+    def exit(self):
+        self.operator.save()
 
     def start(self):
         pass
@@ -93,7 +102,14 @@ def main():
     draw_banner('Energy Bot')
 
     menu = Menu()
-    menu.main()
+    try:
+        menu.main()
+    except KeyboardInterrupt:
+        menu.operator.save()
+        print('Exit')
+    except Exception as e:
+        menu.operator.save()
+        raise e
 
 
 if __name__ == "__main__":
