@@ -3,7 +3,7 @@ from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
 from plistlib import Data
-from typing import Dict
+from typing import Dict, List
 from urllib import request
 from urllib.error import URLError
 
@@ -52,6 +52,16 @@ class Menu:
     def __init__(self):
         self.operator = Operator()
 
+    def menu_item(self, name: str, type: str, text: str, **kwargs) -> List[Dict]:
+        item = {
+            'type': type,
+            'name': name,
+            'message': text,
+        }
+
+        item.update(kwargs)
+        return [item]
+
     def main(self):
         options = {
             'Start Bot': self.start,
@@ -63,14 +73,7 @@ class Menu:
         else:
             options['Login'] = self.login
 
-        entries = [
-            {
-                'type': 'list',
-                'name': 'next',
-                'message': 'What do you want to do?',
-                'choices': options.keys(),
-            }
-        ]
+        entries = self.menu_item('next', 'list', 'What do you want to do?', choices=options.keys())
 
         answer = prompt(entries)
         method = options.get(answer['next'])
