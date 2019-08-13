@@ -1,5 +1,4 @@
 import json
-from http.client import HTTPResponse
 from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
@@ -27,18 +26,15 @@ class EnergySession:
         self.last_response = None
         self.token = None
 
-    def smstoken(self, mobile: str) -> Dict:
+    def smstoken(self, mobile: str) -> bool:
         endpoint = 'smstoken'
 
         data = {
             'mobile': mobile,
         }
 
-        response = self._request(endpoint=endpoint, data=data, method='POST')
-        return json.load(response)
-
-    def check_login(self) -> bool:
-        pass
+        response_data = self._request(endpoint=endpoint, data=data, method='POST')
+        return response_data.get('status') == 'ok'
 
     def login(self, mobile: str, token: str) -> bool:
         endpoint = f'smstoken/{token}'
@@ -48,6 +44,7 @@ class EnergySession:
         }
 
         response_data = self._request(endpoint=endpoint, data=data, method='PUT')
+        return bool(response_data.get('token'))
 
         self.token = response_data.get('token')
         return bool(self.token)
