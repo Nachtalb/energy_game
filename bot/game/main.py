@@ -23,7 +23,10 @@ class EnergySession:
     def check_login(self) -> bool:
         pass
 
-    def login(self) -> bool:
+    def login(self, tel: str, token: str) -> bool:
+        pass
+
+    def request_login_token(self, tel: str) -> bool:
         pass
 
     def logout(self):
@@ -100,6 +103,8 @@ class Menu:
             self.tel = prompt(tel_question).get('tel')
 
         print(f'Your Number: {self.tel}')
+        self.session.request_login_token(self.tel)
+
         print('Energy will now send you a code')
 
         code_question = self.menu_item('code', 'input', 'Please put in the code that was sent to your phone:')
@@ -107,6 +112,7 @@ class Menu:
         while not code:
             code = prompt(code_question).get('code')
 
+        self.session.login(self.tel, code)
         self.main()
 
     def logout(self):
