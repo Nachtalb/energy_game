@@ -1,11 +1,12 @@
+import json
 from http.client import HTTPResponse
 from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
-from plistlib import Data
 from typing import Dict, List
-from urllib import request
 from urllib.error import URLError
+from urllib.parse import urlencode, urlunsplit
+from urllib.request import HTTPCookieProcessor, Request, build_opener
 
 from PyInquirer import prompt
 
@@ -13,30 +14,80 @@ from bot.game.utils import draw_banner
 
 
 class EnergySession:
+    base_url = 'game.energy.ch'
+    api_root = '/api'
+    protocol = 'https'
+
     def __init__(self):
         cookie_file = Path(getcwd()) / 'cookies.txt'
         self.cookie_jar = MozillaCookieJar(str(cookie_file))
         self.cookie_jar.load()
 
-        self.session = request.build_opener(request.HTTPCookieProcessor(self.cookie_jar))
+        self.session = build_opener(HTTPCookieProcessor(self.cookie_jar))
+        self.last_response = None
+        self.token = None
+
+    def smstoken(self, mobile: str) -> Dict:
+        endpoint = 'smstoken'
+
+        data = {
+            'mobile': mobile,
+        }
+
+        response = self.post(endpoint=endpoint, data=data)
+        return json.load(response)
 
     def check_login(self) -> bool:
         pass
 
-    def login(self, tel: str, token: str) -> bool:
-        pass
+    def login(self, mobile: str, token: str) -> bool:
+        endpoint = f'smstoken/{token}'
 
-    def request_login_token(self, tel: str) -> bool:
-        pass
+        data = {
+            'mobile': mobile,
+        }
+
+        response = self.put(endpoint=endpoint, data=data)
+        response_data = json.load(response)
+
+        self.token = response_data.get('token')
+        return bool(self.token)
 
     def logout(self):
         pass
 
-    def get(self, url: str, data: Dict = None) -> HTTPResponse:
-        pass
+    def _build_url(self, endpoint: str, parameters: Dict = None) -> str:
+        query = urlencode(parameters or {})
+        return urlunsplit((self.protocol, self.base_url, f'{self.api_root}/{endpoint}', query, ''))
 
-    def post(self, url: str, data: Data = None) -> HTTPResponse:
-        pass
+    def _request(self, request: Request) -> HTTPResponse:
+        request.origin_req_host=f'{self.protocol}://{self.base_url}'
+        self.last_response = self.session.open(request)
+        self.cookie_jar.save()
+        return self.last_response
+
+    def get(self, *, endpoint: str, data: Dict = None) -> HTTPResponse:
+        url = self._build_url(endpoint, data)
+
+        get_request = Request(url, method='GET')
+        return self._request(get_request)
+
+    def post(self, *, endpoint: str, data: Dict = None) -> HTTPResponse:
+        url = self._build_url(endpoint)
+
+        encoded = urlencode(data).encode()
+
+        get_request = Request(url, method='POST', data=encoded)
+        return self._request(get_request)
+
+
+    def put(self, *, endpoint: str, data: Dict = None) -> HTTPResponse:
+        url = self._build_url(endpoint)
+
+        encoded = urlencode(data).encode()
+
+        get_request = Request(url, method='PUT', data=encoded)
+        return self._request(get_request)
 
 
 class Operator:
