@@ -54,6 +54,7 @@ class Operator:
 class Menu:
     def __init__(self):
         self.operator = Operator()
+        self.tel = ''
 
     def menu_item(self, name: str, type: str, text: str, **kwargs) -> List[Dict]:
         item = {
@@ -92,7 +93,20 @@ class Menu:
         pass
 
     def login(self):
-        pass
+        tel_question = self.menu_item('tel', 'input', 'Please give me your cellphone number:')
+        self.tel = None
+        while not self.tel:
+            self.tel = prompt(tel_question).get('tel')
+
+        print(f'Your Number: {self.tel}')
+        print('Energy will now send you a code')
+
+        code_question = self.menu_item('code', 'input', 'Please put in the code that was sent to your phone:')
+        code = None
+        while not code:
+            code = prompt(code_question).get('code')
+
+        self.main()
 
     def logout(self):
         pass
