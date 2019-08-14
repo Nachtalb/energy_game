@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 from http.cookiejar import MozillaCookieJar
 from os import getcwd
@@ -130,23 +131,27 @@ class Menu:
         pass
 
     def login(self):
-        tel_question = self.menu_item('tel', 'input', 'Please give me your cellphone number:')
-        self.tel = None
-        while not self.tel:
+        tel_question = self.menu_item('tel', 'input', 'Please give me your cellphone number: +41')
+
+        while True:
             self.tel = prompt(tel_question).get('tel')
+            tel = re.sub('^(\+41|0)+', '', self.tel)
 
-        print(f'Your Number: {self.tel}')
-        self.session.request_login_token(self.tel)
+            if tel and not self.session.smstoken(tel):
+                print(f'Could not initiate login with your number "{self.tel}"')
+            else:
+                break
 
-        print('Energy will now send you a code')
+        print('Energy will now send you a code.')
 
         code_question = self.menu_item('code', 'input', 'Please put in the code that was sent to your phone:')
-        code = None
-        while not code:
+        while True:
             code = prompt(code_question).get('code')
 
-        self.session.login(self.tel, code)
-        self.main()
+            if not code or not self.session.login(tel, code):
+                print('Code seems to be incorrect, please try again.')
+            else:
+                break
 
     def logout(self):
         pass
