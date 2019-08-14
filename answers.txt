@@ -26,7 +26,7 @@ Question [5]: Wie schwer ist die Energy Air Bühne?
 Option 1: 450 Tonnen
 Option 2: 60 Tonnen
 Option 3: 1000 Tonnen
-Answer: 2
+Answer: 3
 --------------------------------------------------------------------------------
 Question [6]: Wer eröffnete das erste Energy Air?
 Option 1: Lo&Leduc
@@ -122,7 +122,7 @@ Question [21]: Wie viele Spotlights gibt es am Energy Air?
 Option 1: 100
 Option 2: 500
 Option 3: 250
-Answer: 2
+Answer: 3
 --------------------------------------------------------------------------------
 Question [22]: Auf welcher Social-Media-Plattform kann man keine Energy Air Tickets gewinnen?
 Option 1: Twitter
