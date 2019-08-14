@@ -102,7 +102,7 @@ class EnergySession:
         return response.get('win')
 
     def logout(self):
-        pass
+        self.cookie_jar.clear()
 
     def _build_url(self, endpoint: str, parameters: Dict = None) -> str:
         query = urlencode(parameters or {})

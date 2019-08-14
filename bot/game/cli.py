@@ -100,7 +100,7 @@ class Menu:
                 break
 
     def logout(self):
-        pass
+        self.session.logout()
 
 
 def main():
