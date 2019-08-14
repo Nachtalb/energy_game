@@ -72,7 +72,7 @@ class EnergySession:
         timestamp = self._jwt_data().get('exp')
         return datetime.utcfromtimestamp(timestamp) if timestamp else None
 
-    def questions(self):
+    def questions(self) -> List[Dict]:
         endpoint = 'questions'
 
         return self._request(endpoint=endpoint)
@@ -94,7 +94,7 @@ class EnergySession:
         query = urlencode(parameters or {})
         return urlunsplit((self.protocol, self.base_url, f'{self.api_root}/{endpoint}', query, ''))
 
-    def _request(self, *, endpoint: str, data: Dict = None, params: Dict = None, method: str = None) -> Dict:
+    def _request(self, *, endpoint: str, data: Dict = None, params: Dict = None, method: str = None) -> Dict or List:
         method = method or 'GET'
 
         url = self._build_url(endpoint, params)
