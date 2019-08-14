@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.0.1.dev0'
+version = '2.0.0.dev0'
 
 setup(
     name='Energy Game',
@@ -8,19 +8,17 @@ setup(
     description='Bot for game.energy.ch',
     long_description=open('README.rst').read(),
 
-    # Get more strings from
-    # http://www.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.7',
     ],
 
-    keywords='nachtalb,energy.ch',
+    keywords='nachtalb,energy.ch,energy air',
     author='Nachtalb',
     author_email='mailto:info@nachtalb.ch',
     url='https://github.com/Nachtalb/energy_game',
     license='THE BEER-WARE LICENSE',
-    license_file='LICENSE.txt',
+    license_file='LICENSE',
 
     packages=find_packages(),
 

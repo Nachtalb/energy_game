@@ -19,16 +19,6 @@ class Menu:
 
         self.tel = ''
 
-    def menu_item(self, name: str, type: str, text: str, **kwargs) -> List[Dict]:
-        item = {
-            'type': type,
-            'name': name,
-            'message': text,
-        }
-
-        item.update(kwargs)
-        return [item]
-
     def main(self):
         options = {}
         if self.operator.logged_in:
@@ -46,18 +36,15 @@ class Menu:
         method = options.get(answer.get('next'), self.exit)
         method()
 
-    def exit(self):
-        self.operator.save()
-        self.running = False
+    def menu_item(self, name: str, type: str, text: str, **kwargs) -> List[Dict]:
+        item = {
+            'type': type,
+            'name': name,
+            'message': text,
+        }
 
-    def run_once(self):
-        result = self.operator.run_game()
-
-        if not result:
-            print('No ticket won.')
-            return
-
-        print('You have won!')
+        item.update(kwargs)
+        return [item]
 
     def start(self):
         try:
@@ -73,6 +60,15 @@ class Menu:
             pass
         finally:
             print('\nStopping')
+
+    def run_once(self):
+        result = self.operator.run_game()
+
+        if not result:
+            print('No ticket won.')
+            return
+
+        print('You have won!')
 
     def login(self):
         tel_question = self.menu_item('tel', 'input', 'Please give me your cellphone number: +41')
@@ -102,10 +98,16 @@ class Menu:
     def logout(self):
         self.session.logout()
 
+    def exit(self):
+        self.operator.save()
+        self.running = False
+
 
 def main():
     draw_banner('Energy Bot')
+
     debug = 'debug' in sys.argv
+
     menu = Menu()
     while menu.running:
         try:

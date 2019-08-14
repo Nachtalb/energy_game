@@ -22,7 +22,15 @@ class EnergySession:
 
         self.session = build_opener(HTTPCookieProcessor(self.cookie_jar))
         self.last_response = None
-        self.token = None
+
+    @property
+    def phone_number(self) -> str:
+        return self._jwt_data().get('sub')
+
+    @property
+    def expiry(self) -> datetime or None:
+        timestamp = self._jwt_data().get('exp')
+        return datetime.utcfromtimestamp(timestamp) if timestamp else None
 
     def smstoken(self, mobile: str) -> bool:
         endpoint = 'smstoken'
@@ -51,25 +59,8 @@ class EnergySession:
             raise e
         return bool(response_data.get('token'))
 
-    def _jwt_data(self) -> Dict:
-        token = None
-        for cookie in self.cookie_jar:
-            if cookie.name != 'jwt-token':
-                continue
-            token = cookie.value
-        if not token:
-            return {}
-        data = token.split('.')[1]
-        return json.loads(base64.decodebytes(data.encode())) or {}
-
-    @property
-    def phone_number(self) -> str:
-        return self._jwt_data().get('sub')
-
-    @property
-    def expiry(self) -> datetime or None:
-        timestamp = self._jwt_data().get('exp')
-        return datetime.utcfromtimestamp(timestamp) if timestamp else None
+    def logout(self):
+        self.cookie_jar.clear()
 
     def questions(self) -> List[Dict]:
         endpoint = 'questions'
@@ -101,8 +92,17 @@ class EnergySession:
         response = self._request(endpoint=endpoint, data=data, method='POST')
         return response.get('win')
 
-    def logout(self):
-        self.cookie_jar.clear()
+
+    def _jwt_data(self) -> Dict:
+        token = None
+        for cookie in self.cookie_jar:
+            if cookie.name != 'jwt-token':
+                continue
+            token = cookie.value
+        if not token:
+            return {}
+        data = token.split('.')[1]
+        return json.loads(base64.decodebytes(data.encode())) or {}
 
     def _build_url(self, endpoint: str, parameters: Dict = None) -> str:
         query = urlencode(parameters or {})

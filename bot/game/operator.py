@@ -20,6 +20,47 @@ class Operator:
         if not self.answers:
             self.load_answers(answer_file)
 
+    @property
+    def logged_in(self) -> bool:
+        return self.session.expiry and self.session.expiry > datetime.utcnow()
+
+    def run(self) -> Generator[bool, None, None]:
+        try:
+            while True:
+                yield self.run_game()
+        finally:
+            pass
+
+    def run_game(self) -> bool:
+        questions = self.session.questions()
+        answers = list(self.answers_for_questions(questions))
+        won = self.session.check_questions(answers)
+        return won
+
+    def save(self):
+        self.session.cookie_jar.save()
+
+    def answers_for_questions(self, questions: List[Dict]) -> List[int]:
+        for question in questions:
+            yield self.answer_to_question(question)
+
+    def answer_to_question(self, question: Dict) -> int:
+        answer = self.answers[question['id']]
+        if answer is None and self.guess_randomly:
+            return choice([0, 1, 2])
+        elif answer is None:
+            raise KeyError(f'No know answer found to question {question["id"]}')
+
+        answer = answer.lower()
+        for index, option in enumerate(question['answers']):
+            if answer == option['text'].lower():
+                return index
+
+        if self.guess_randomly:
+            return choice([0, 1, 2])
+        else:
+            raise KeyError(f'No fitting answer found to question {question["id"]}')
+
     def load_answers(self, answer_file: str or Path = None):
         path = (Path(answer_file) if answer_file else Path() / 'answers.txt').absolute()
         str_path = str(path)
@@ -68,44 +109,3 @@ class Operator:
                     self.answers[current_question] = current_options.get(answer)
                     current_question = None
                     current_options = {}
-
-    @property
-    def logged_in(self) -> bool:
-        return self.session.expiry and self.session.expiry > datetime.utcnow()
-
-    def save(self):
-        self.session.cookie_jar.save()
-
-    def answer_to_question(self, question: Dict) -> int:
-        answer = self.answers[question['id']]
-        if answer is None and self.guess_randomly:
-            return choice([0, 1, 2])
-        elif answer is None:
-            raise KeyError(f'No know answer found to question {question["id"]}')
-
-        answer = answer.lower()
-        for index, option in enumerate(question['answers']):
-            if answer == option['text'].lower():
-                return index
-
-        if self.guess_randomly:
-            return choice([0, 1, 2])
-        else:
-            raise KeyError(f'No fitting answer found to question {question["id"]}')
-
-    def answers_for_questions(self, questions: List[Dict]) -> List[int]:
-        for question in questions:
-            yield self.answer_to_question(question)
-
-    def run_game(self) -> bool:
-        questions = self.session.questions()
-        answers = list(self.answers_for_questions(questions))
-        won = self.session.check_questions(answers)
-        return won
-
-    def run(self) -> Generator[bool, None, None]:
-        try:
-            while True:
-                yield self.run_game()
-        finally:
-            pass
