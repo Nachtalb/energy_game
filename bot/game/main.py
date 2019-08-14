@@ -310,12 +310,16 @@ class Menu:
             else:
                 break
 
-        code_question = self.menu_item('code', 'input', 'Please put in the code that was sent to your phone:')
+        message = 'Please put in the code that was sent to your phone [{}/5]:'
+        code_question = self.menu_item('code', 'input', message)
+        tries = 1
         while True:
+            code_question[0]['message'] = message.format(tries)
             code = prompt(code_question).get('code')
 
             if not code or not self.session.login(tel, code):
                 print('Code seems to be incorrect, please try again.')
+                tries += 1
             else:
                 break
 
