@@ -116,7 +116,7 @@ Question [20]: Wie viele Konfetti-Kanonen gibt es am Energy Air?
 Option 1: 20
 Option 2: 40
 Option 3: 60
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [21]: Wie viele Spotlights gibt es am Energy Air?
 Option 1: 100
@@ -152,7 +152,7 @@ Question [26]: Wie viele Mitarbeiter sind am Energy Air im Einsatz?
 Option 1: 1000
 Option 2: 1600
 Option 3: 1300
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [27]: Auf welchem Weg kann man KEINE Energy Air Tickets gewinnen?
 Option 1: Postkarte
