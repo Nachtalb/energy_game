@@ -2,25 +2,25 @@ Question [1]: Wie viele Energy Air Tickets werden verlost?
 - Option 1: 40’000
 - Option 2: 20’000
 - Option 3: 30’000
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [2]: Wo findet das Energy Air statt?
 - Option 1: Stade de Suisse, Bern
 - Option 2: Letzigrund, Zürich
 - Option 3: Hallenstadion, Zürich
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [3]: Die wievielte Energy Air Ausgabe findet dieses Jahr statt?
 - Option 1: Die sechste
 - Option 2: Die vierte
 - Option 3: Die fünfte
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [4]: Wann fand das Energy Air zum ersten Mal statt?
 - Option 1: 2012
 - Option 2: 2013
 - Option 3: 2014
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [5]: Wie schwer ist die Energy Air Bühne?
 - Option 1: 450 Tonnen
@@ -32,85 +32,85 @@ Question [6]: Wer eröffnete das erste Energy Air?
 - Option 1: Lo&Leduc
 - Option 2: Pegasus
 - Option 3: Bastian Baker
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [7]: Wie viele Acts waren beim letzten Energy Air dabei?
 - Option 1: 13
 - Option 2: 14
 - Option 3: 15
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [8]: Wer war der letzte Act am Energy Air 2018?
 - Option 1: Kodaline
 - Option 2: Wincent Weiss
 - Option 3: Lo & Leduc
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [9]: Energy Air Tickets kann man…
 - Option 1: ersteigern
 - Option 2: gewinnen
 - Option 3: kaufen
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [10]: Welche Fussballmannschaft ist im Stade de Suisse zuhause?
 - Option 1: FC Basel 1893
 - Option 2: Grasshopper Club Zürich
 - Option 3: BSC Young Boys
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [11]: Welcher dieser Acts hatte einen Auftritt am Energy Air 2018?
 - Option 1: DJ Antoine
 - Option 2: Alvaro Soler
 - Option 3: Ed Sheeran
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [12]: Wann findet das Energy Air 2019 statt?
 - Option 1: 7. September 2019
 - Option 2: 6. August 2019
 - Option 3: 18. September 2019
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [13]: Wo erfährst du immer die neusten Infos rund um das Energy Air?
 - Option 1: im Radio, auf der Website und über Social Media
 - Option 2: in der Zeitung
 - Option 3: per Fax
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [14]: Mit welchem dieser Tickets geniesst du die beste Sicht zur Energy Air Bühne?
 - Option 1: Sitzplatz
 - Option 2: Stehplatz
 - Option 3: XTRA-Circle
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [15]: Was passiert, wenn es am Eventtag regnet?
 - Option 1: Energy Air findet trotzdem statt
 - Option 2: Energy Air wird abgesagt
 - Option 3: Energy Air wird verschoben
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [16]: Wann beginnt das Energy Air 2019?
 - Option 1: Um 18 Uhr
 - Option 2: Um 16 Uhr
 - Option 3: Um 17 Uhr
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [17]: Welche DJ-Acts standen 2018 auf der Bühne des Energy Air?
 - Option 1: Averdeck
 - Option 2: Alan Walker
 - Option 3: David Guetta
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [18]: Welche amerikanische Band trat am Energy Air 2016 auf?
 - Option 1: One Republic
 - Option 2: Backstreet Boys
 - Option 3: Maroon 5
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [19]: Wie breit ist die Energy Air Bühne?
 - Option 1: 100 Meter
 - Option 2: 70 Meter
 - Option 3: 50 Meter
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [20]: Wie viele Konfetti-Kanonen gibt es am Energy Air?
 - Option 1: 20
@@ -128,41 +128,41 @@ Question [22]: Auf welcher Social-Media-Plattform kann man keine Energy Air Tick
 - Option 1: Twitter
 - Option 2: Facebook
 - Option 3: Instagram
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [23]: Was verlangte Nena am Energy Air 2016?
 - Option 1: Eine Garderobe voller Sonnenblumen
 - Option 2: Fünf Kilo Schweizer Schoggi in der Garderobe
 - Option 3: Eine komplett weisse Garderobe
-Answer:
+Answer: 3
 --------------------------------------------------------------------------------
 Question [24]: Wie reiste Kygo im Jahr 2015 ans Energy Air?
 - Option 1: Mit dem Zug
 - Option 2: Im Privatjet
 - Option 3: Im Ferrari
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [25]: Wen nahm Knackeboul am Energy Air 2014 mit backstage?
 - Option 1: Einen Fan
 - Option 2: Sein Mami
 - Option 3: Seine Freundin
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [26]: Wie viele Mitarbeiter sind am Energy Air im Einsatz?
 - Option 1: 1000
 - Option 2: 1600
 - Option 3: 1300
-Answer:
+Answer: 1
 --------------------------------------------------------------------------------
 Question [27]: Auf welchem Weg kann man KEINE Energy Air Tickets gewinnen?
 - Option 1: Postkarte
 - Option 2: E-Mail
 - Option 3: SMS
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [28]: Energy Air ist der einzige Energy Event, …
 - Option 1: ...bei dem nationale und internationale Künstler auftreten.
 - Option 2: ...der unter freiem Himmel stattfindet.
 - Option 3: ...für den man Tickets nur gewinnen kann.
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
