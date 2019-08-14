@@ -1,6 +1,8 @@
+import base64
 import json
 import re
 import sys
+from datetime import datetime
 from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
@@ -48,8 +50,30 @@ class EnergySession:
         response_data = self._request(endpoint=endpoint, data=data, method='PUT')
         return bool(response_data.get('token'))
 
-        self.token = response_data.get('token')
-        return bool(self.token)
+    def _jwt_data(self) -> Dict:
+        token = None
+        for cookie in self.cookie_jar:
+            if cookie.name != 'jwt-token':
+                continue
+            token = cookie.value
+        if not token:
+            return {}
+        data = token.split('.')[1]
+        return json.loads(base64.decodebytes(data.encode())) or {}
+
+    @property
+    def phone_number(self) -> str:
+        return self._jwt_data().get('sub')
+
+    @property
+    def expiry(self) -> datetime or None:
+        timestamp = self._jwt_data().get('exp')
+        return datetime.utcfromtimestamp(timestamp) if timestamp else None
+
+    def questions(self):
+        endpoint = 'questions'
+
+        return self._request(endpoint=endpoint)
 
     def logout(self):
         pass
