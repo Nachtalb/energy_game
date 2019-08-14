@@ -141,6 +141,7 @@ class Operator:
         str_path = str(path)
         with closing(path.open()) as file:
             current_question = None
+            current_options = {}
             for line_nr, line in enumerate(file.readlines(), 1):
                 line = line.strip().lower()
                 error_line = (str_path, line_nr, None, None)
@@ -151,6 +152,20 @@ class Operator:
                     elif int(ids[0]) in self.answers:
                         raise SyntaxError(f'Duplicate Question', error_line)
                     current_question = int(ids[0])
+
+                elif line.startswith('option'):
+                    ids = re.findall('(\d)\s*:', line)
+                    text = re.findall(':(.*)', line)
+                    if not text:
+                        raise SyntaxError(f'Option is missing', error_line)
+                    elif not ids:
+                        raise SyntaxError(f'Option ID is missing', error_line)
+                    elif not current_question:
+                        raise SyntaxError(f'Option found but no connected question for it', error_line)
+                    elif int(ids[0]) not in [1, 2, 3]:
+                        raise SyntaxError(f'Option ID must be either 1, 2 or 3', error_line)
+                    current_options[int(ids[0]) - 1] = text[0].strip()
+
                 elif line.startswith('answer'):
                     ids = re.findall('(\d+)', line)
                     if not ids:
@@ -161,10 +176,14 @@ class Operator:
                         raise SyntaxError(f'Answer found but no connected question for it', error_line)
                     elif int(ids[0]) not in [1, 2, 3]:
                         raise SyntaxError(f'Answer must be either 1, 2 or 3', error_line)
+                    elif len(current_options) != 3:
+                        raise SyntaxError(f'Answer found but wrong amount of options {len(current_options)} instead of 3',
+                                          error_line)
                     else:
                         answer = int(ids[0]) - 1
-                    self.answers[current_question] = answer
+                    self.answers[current_question] = current_options.get(answer)
                     current_question = None
+                    current_options = {}
 
     @property
     def logged_in(self) -> bool:
@@ -173,17 +192,30 @@ class Operator:
     def save(self):
         self.session.cookie_jar.save()
 
-    def answer_to_question(self, question_id: int) -> int:
-        answer = self.answers[question_id]
-        return choice([0, 1, 2]) if answer is None else answer
+    def answer_to_question(self, question: Dict) -> int:
+        answer = self.answers[question['id']]
+        if answer is None and self.guess_randomly:
+            return choice([0, 1, 2])
+        elif answer is None:
+            raise KeyError(f'No know answer found to question {question["id"]}')
+
+        answer = answer.lower()
+        for index, option in enumerate(question['answers']):
+            if answer == option['text'].lower():
+                return index
+
+        if self.guess_randomly:
+            return choice([0, 1, 2])
+        else:
+            raise KeyError(f'No fitting answer found to question {question["id"]}')
 
     def answers_for_questions(self, questions: List[Dict]) -> List[int]:
         for question in questions:
-            yield self.answer_to_question(question['id'])
+            yield self.answer_to_question(question)
 
     def run_game(self) -> bool:
         questions = self.session.questions()
-        answers = self.answers_for_questions(questions)
+        answers = list(self.answers_for_questions(questions))
         won = self.session.check_questions(answers)
         return won
 
