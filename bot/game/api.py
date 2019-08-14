@@ -114,7 +114,10 @@ class EnergySession:
         url = self._build_url(endpoint, params)
 
         encoded_data = urlencode(data).encode() if data else None
-        request = Request(url, method=method, data=encoded_data)
+        request = Request(url, method=method, data=encoded_data, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/76.0.3809.87 Safari/537.36'
+        })
 
         request.origin_req_host = f'{self.protocol}://{self.base_url}'
         self.last_response = self.session.open(request)
