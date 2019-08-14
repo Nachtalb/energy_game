@@ -8,6 +8,7 @@ from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
 from typing import Dict, List
+from urllib.error import HTTPError
 from urllib.parse import urlencode, urlunsplit
 from urllib.request import HTTPCookieProcessor, Request, build_opener
 
@@ -217,19 +218,29 @@ class Menu:
 
 def main():
     draw_banner('Energy Bot')
-
+    debug = 'debug' in sys.argv
     menu = Menu()
-    try:
-        while menu.running:
+    while menu.running:
+        try:
             menu.main()
-    except KeyboardInterrupt:
-        menu.operator.save()
-    except Exception as e:
-        menu.operator.save()
-        if 'debug' in sys.argv:
+        except HTTPError as e:
+            if not debug:
+                print('An error occurred please try again.')
+                continue
+            menu.running = False
             raise e
-    finally:
-        print('Exit')
+        except KeyboardInterrupt:
+            menu.operator.save()
+            menu.running = False
+        except Exception as e:
+            menu.operator.save()
+            if debug:
+                menu.running = False
+                raise e
+        finally:
+            if not menu.running:
+                print('Exit')
+                break
 
 
 if __name__ == "__main__":
