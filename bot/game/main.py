@@ -100,7 +100,7 @@ class EnergySession:
         }
 
         response = self._request(endpoint=endpoint, data=data, method='POST')
-        return bool(response.get('correct'))
+        return response.get('win')
 
     def logout(self):
         pass
