@@ -302,8 +302,6 @@ class Menu:
             else:
                 break
 
-        print('Energy will now send you a code.')
-
         code_question = self.menu_item('code', 'input', 'Please put in the code that was sent to your phone:')
         while True:
             code = prompt(code_question).get('code')
