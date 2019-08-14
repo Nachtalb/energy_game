@@ -53,7 +53,8 @@ class EnergySession:
         try:
             response_data = self._request(endpoint=endpoint, data=data, method='PUT')
         except HTTPError as e:
-            data = json.load(e)
+            response_data = e.peek()
+            data = json.loads(response_data)
             if data.get('code') == 403 and data.get('errorName') == 'InvalidToken':
                 return False
             raise e
@@ -128,7 +129,7 @@ class EnergySession:
         self.last_response = self.session.open(request)
         self.cookie_jar.save()
 
-        return json.load(self.last_response)
+        return json.loads(self.last_response.peek())
 
 
 class Operator:
@@ -332,7 +333,8 @@ def main():
         except HTTPError as e:
             if not debug:
                 try:
-                    data = json.load(e)
+                    response_data = e.peek()
+                    data = json.loads(response_data)
                     if 'message' in data and 'errorName' in data:
                         print(f'{data["errorName"]}: {data["message"]}')
                         continue
