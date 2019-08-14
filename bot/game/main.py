@@ -50,7 +50,13 @@ class EnergySession:
             'mobile': mobile,
         }
 
-        response_data = self._request(endpoint=endpoint, data=data, method='PUT')
+        try:
+            response_data = self._request(endpoint=endpoint, data=data, method='PUT')
+        except HTTPError as e:
+            data = json.load(e)
+            if data.get('code') == 403 and data.get('errorName') == 'InvalidToken':
+                return False
+            raise e
         return bool(response_data.get('token'))
 
     def _jwt_data(self) -> Dict:
