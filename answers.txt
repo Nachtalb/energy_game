@@ -26,7 +26,7 @@ Question [5]: Wie schwer ist die Energy Air Bühne?
 Option 1: 450 Tonnen
 Option 2: 60 Tonnen
 Option 3: 1000 Tonnen
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [6]: Wer eröffnete das erste Energy Air?
 Option 1: Lo&Leduc
@@ -152,7 +152,7 @@ Question [26]: Wie viele Mitarbeiter sind am Energy Air im Einsatz?
 Option 1: 1000
 Option 2: 1600
 Option 3: 1300
-Answer: 1
+Answer:
 --------------------------------------------------------------------------------
 Question [27]: Auf welchem Weg kann man KEINE Energy Air Tickets gewinnen?
 Option 1: Postkarte
