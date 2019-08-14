@@ -7,6 +7,7 @@ from datetime import datetime
 from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
+from random import choice
 from typing import Dict, List
 from urllib.error import HTTPError
 from urllib.parse import urlencode, urlunsplit
@@ -146,17 +147,30 @@ class Operator:
                     elif int(ids[0]) not in [1, 2, 3]:
                         raise SyntaxError(f'Answer must be either 1, 2 or 3', error_line)
                     else:
-                        answer = int(ids[0])
+                        answer = int(ids[0]) - 1
                     self.answers[current_question] = answer
                     current_question = None
 
     @property
-    def logged_in(self):
+    def logged_in(self) -> bool:
         return self.session.expiry and self.session.expiry > datetime.utcnow()
 
     def save(self):
         self.session.cookie_jar.save()
 
+    def answer_to_question(self, question_id: int) -> int:
+        answer = self.answers[question_id]
+        return choice([0, 1, 2]) if answer is None else answer
+
+    def answers_for_questions(self, questions: List[Dict]) -> List[int]:
+        for question in questions:
+            yield self.answer_to_question(question['id'])
+
+    def run_game(self) -> bool:
+        questions = self.session.questions()
+        answers = self.answers_for_questions(questions)
+        won = self.session.check_questions(answers)
+        return won
 
 class Menu:
     def __init__(self):
@@ -177,7 +191,10 @@ class Menu:
         return [item]
 
     def main(self):
-        options = {'Start Bot': self.start,}
+        options = {
+            'Start Bot': self.start,
+            'Run once': self.run_once,
+        }
 
         if self.operator.logged_in:
             options[f'Logout (+41{self.session.phone_number})'] = self.logout
@@ -195,6 +212,15 @@ class Menu:
     def exit(self):
         self.operator.save()
         self.running = False
+
+    def run_once(self):
+        result = self.operator.run_game()
+
+        if not result:
+            print('No ticket won.')
+            return
+
+        print('You have won!')
 
     def start(self):
         pass
