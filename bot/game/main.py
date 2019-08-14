@@ -77,12 +77,19 @@ class EnergySession:
 
         return self._request(endpoint=endpoint)
 
-    def check_questions(self, answers: List[int]) -> bool:
+    def check_questions(self, answers: List[int], auto_check_win: bool = True) -> bool:
         endpoint = 'questions/check'
 
         data = {
             'answers': answers
         }
+
+        response = self._request(endpoint=endpoint, data=data, method='POST')
+        check = response.get('correct')
+
+        if auto_check_win and check:
+            return self.check_win()
+        return check
 
     def check_win(self) -> bool:
         endpoint = 'win'
