@@ -122,7 +122,7 @@ Question [21]: Wie viele Spotlights gibt es am Energy Air?
 Option 1: 100
 Option 2: 500
 Option 3: 250
-Answer:
+Answer: 2
 --------------------------------------------------------------------------------
 Question [22]: Auf welcher Social-Media-Plattform kann man keine Energy Air Tickets gewinnen?
 Option 1: Twitter
