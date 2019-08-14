@@ -29,7 +29,6 @@ setup(
         'pyfiglet==0.8.post1',
         'termcolor==1.1.0',
         'prompt-toolkit==1.0.14',
-
     ],
     entry_points={'console_scripts': ['energy=bot.game.cli:main']},
 )
