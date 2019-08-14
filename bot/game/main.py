@@ -76,6 +76,16 @@ class EnergySession:
 
         return self._request(endpoint=endpoint)
 
+    def check_questions(self, answers: List[int]) -> bool:
+        endpoint = 'questions/check'
+
+        data = {
+            'answers': answers
+        }
+
+        response = self._request(endpoint=endpoint, data=data, method='POST')
+        return bool(response.get('correct'))
+
     def logout(self):
         pass
 
