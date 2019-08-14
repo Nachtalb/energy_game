@@ -214,12 +214,10 @@ class Menu:
         return [item]
 
     def main(self):
-        options = {
-            'Start Bot': self.start,
-            'Run once': self.run_once,
-        }
-
+        options = {}
         if self.operator.logged_in:
+            options['Start Bot'] = self.start
+            options['Run once'] = self.run_once
             options[f'Logout (+41{self.session.phone_number})'] = self.logout
         else:
             options['Login'] = self.login
