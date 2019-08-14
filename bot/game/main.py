@@ -84,6 +84,14 @@ class EnergySession:
             'answers': answers
         }
 
+    def check_win(self) -> bool:
+        endpoint = 'win'
+
+        data = {
+            'name': "eair",
+            'isTicketGame': True
+        }
+
         response = self._request(endpoint=endpoint, data=data, method='POST')
         return bool(response.get('correct'))
 
