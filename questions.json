@@ -1,0 +1,478 @@
+{
+    "1": {
+        "answers": [
+            {
+                "text": "40’000"
+            },
+            {
+                "text": "20’000"
+            },
+            {
+                "text": "30’000"
+            }
+        ],
+        "id": 1,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/1_1564750620.jpg",
+        "text": "Wie viele Energy Air Tickets werden verlost?"
+    },
+    "2": {
+        "answers": [
+            {
+                "text": "Stade de Suisse, Bern"
+            },
+            {
+                "text": "Letzigrund, Zürich"
+            },
+            {
+                "text": "Hallenstadion, Zürich"
+            }
+        ],
+        "id": 2,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/2_1564750620.jpg",
+        "text": "Wo findet das Energy Air statt?"
+    },
+    "3": {
+        "answers": [
+            {
+                "text": "Die sechste"
+            },
+            {
+                "text": "Die vierte"
+            },
+            {
+                "text": "Die fünfte"
+            }
+        ],
+        "id": 3,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/3_1564750620.jpg",
+        "text": "Die wievielte Energy Air Ausgabe findet dieses Jahr statt?"
+    },
+    "4": {
+        "answers": [
+            {
+                "text": "2012"
+            },
+            {
+                "text": "2013"
+            },
+            {
+                "text": "2014"
+            }
+        ],
+        "id": 4,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/4_1564750620.jpg",
+        "text": "Wann fand das Energy Air zum ersten Mal statt?"
+    },
+    "5": {
+        "answers": [
+            {
+                "text": "450 Tonnen"
+            },
+            {
+                "text": "60 Tonnen"
+            },
+            {
+                "text": "1000 Tonnen"
+            }
+        ],
+        "id": 5,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/5_1564750620.jpg",
+        "text": "Wie schwer ist die Energy Air Bühne?"
+    },
+    "6": {
+        "answers": [
+            {
+                "text": "Lo&Leduc"
+            },
+            {
+                "text": "Pegasus"
+            },
+            {
+                "text": "Bastian Baker"
+            }
+        ],
+        "id": 6,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/6_1564750620.jpg",
+        "text": "Wer eröffnete das erste Energy Air?"
+    },
+    "7": {
+        "answers": [
+            {
+                "text": "13"
+            },
+            {
+                "text": "14"
+            },
+            {
+                "text": "15"
+            }
+        ],
+        "id": 7,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/7_1564750620.jpg",
+        "text": "Wie viele Acts waren beim letzten Energy Air dabei?"
+    },
+    "8": {
+        "answers": [
+            {
+                "text": "Kodaline"
+            },
+            {
+                "text": "Wincent Weiss"
+            },
+            {
+                "text": "Lo & Leduc"
+            }
+        ],
+        "id": 8,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/8_1564750620.jpg",
+        "text": "Wer war der letzte Act am Energy Air 2018?"
+    },
+    "9": {
+        "answers": [
+            {
+                "text": "ersteigern"
+            },
+            {
+                "text": "gewinnen"
+            },
+            {
+                "text": "kaufen"
+            }
+        ],
+        "id": 9,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/9_1564750620.jpg",
+        "text": "Energy Air Tickets kann man…"
+    },
+    "10": {
+        "answers": [
+            {
+                "text": "FC Basel 1893"
+            },
+            {
+                "text": "Grasshopper Club Zürich"
+            },
+            {
+                "text": "BSC Young Boys"
+            }
+        ],
+        "id": 10,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/10_1564750620.jpg",
+        "text": "Welche Fussballmannschaft ist im Stade de Suisse zuhause?"
+    },
+    "11": {
+        "answers": [
+            {
+                "text": "DJ Antoine"
+            },
+            {
+                "text": "Alvaro Soler"
+            },
+            {
+                "text": "Ed Sheeran"
+            }
+        ],
+        "id": 11,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/11_1564750620.jpg",
+        "text": "Welcher dieser Acts hatte einen Auftritt am Energy Air 2018?"
+    },
+    "12": {
+        "answers": [
+            {
+                "text": "7. September 2019"
+            },
+            {
+                "text": "6. August 2019"
+            },
+            {
+                "text": "18. September 2019"
+            }
+        ],
+        "id": 12,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/12_1564750620.jpg",
+        "text": "Wann findet das Energy Air 2019 statt?"
+    },
+    "13": {
+        "answers": [
+            {
+                "text": "im Radio, auf der Website und über Social Media"
+            },
+            {
+                "text": "in der Zeitung"
+            },
+            {
+                "text": "per Fax"
+            }
+        ],
+        "id": 13,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/13_1564750620.jpg",
+        "text": "Wo erfährst du immer die neusten Infos rund um das Energy Air?"
+    },
+    "14": {
+        "answers": [
+            {
+                "text": "Sitzplatz"
+            },
+            {
+                "text": "Stehplatz"
+            },
+            {
+                "text": "XTRA-Circle"
+            }
+        ],
+        "id": 14,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/14_1564750620.jpg",
+        "text": "Mit welchem dieser Tickets geniesst du die beste Sicht zur Energy Air Bühne?"
+    },
+    "15": {
+        "answers": [
+            {
+                "text": "Energy Air findet trotzdem statt"
+            },
+            {
+                "text": "Energy Air wird abgesagt"
+            },
+            {
+                "text": "Energy Air wird verschoben"
+            }
+        ],
+        "id": 15,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/15_1564750620.jpg",
+        "text": "Was passiert, wenn es am Eventtag regnet?"
+    },
+    "16": {
+        "answers": [
+            {
+                "text": "Um 18 Uhr"
+            },
+            {
+                "text": "Um 16 Uhr"
+            },
+            {
+                "text": "Um 17 Uhr"
+            }
+        ],
+        "id": 16,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/16_1564750620.jpg",
+        "text": "Wann beginnt das Energy Air 2019?"
+    },
+    "17": {
+        "answers": [
+            {
+                "text": "Averdeck"
+            },
+            {
+                "text": "Alan Walker"
+            },
+            {
+                "text": "David Guetta"
+            }
+        ],
+        "id": 17,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/17_1564750620.jpg",
+        "text": "Welche DJ-Acts standen 2018 auf der Bühne des Energy Air?"
+    },
+    "18": {
+        "answers": [
+            {
+                "text": "One Republic"
+            },
+            {
+                "text": "Backstreet Boys"
+            },
+            {
+                "text": "Maroon 5"
+            }
+        ],
+        "id": 18,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/18_1564750620.jpg",
+        "text": "Welche amerikanische Band trat am Energy Air 2016 auf?"
+    },
+    "19": {
+        "answers": [
+            {
+                "text": "100 Meter"
+            },
+            {
+                "text": "70 Meter"
+            },
+            {
+                "text": "50 Meter"
+            }
+        ],
+        "id": 19,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/19_1564750620.jpg",
+        "text": "Wie breit ist die Energy Air Bühne?"
+    },
+    "20": {
+        "answers": [
+            {
+                "text": "20"
+            },
+            {
+                "text": "40"
+            },
+            {
+                "text": "60"
+            }
+        ],
+        "id": 20,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/20_1564750620.jpg",
+        "text": "Wie viele Konfetti-Kanonen gibt es am Energy Air?"
+    },
+    "21": {
+        "answers": [
+            {
+                "text": "100"
+            },
+            {
+                "text": "500"
+            },
+            {
+                "text": "250"
+            }
+        ],
+        "id": 21,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/21_1564750620.jpg",
+        "text": "Wie viele Spotlights gibt es am Energy Air?"
+    },
+    "22": {
+        "answers": [
+            {
+                "text": "Twitter"
+            },
+            {
+                "text": "Facebook"
+            },
+            {
+                "text": "Instagram"
+            }
+        ],
+        "id": 22,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/22_1564750620.jpg",
+        "text": "Auf welcher Social-Media-Plattform kann man keine Energy Air Tickets gewinnen?"
+    },
+    "23": {
+        "answers": [
+            {
+                "text": "Eine Garderobe voller Sonnenblumen"
+            },
+            {
+                "text": "Fünf Kilo Schweizer Schoggi in der Garderobe"
+            },
+            {
+                "text": "Eine komplett weisse Garderobe"
+            }
+        ],
+        "id": 23,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/23_1564750620.jpg",
+        "text": "Was verlangte Nena am Energy Air 2016?"
+    },
+    "24": {
+        "answers": [
+            {
+                "text": "Mit dem Zug"
+            },
+            {
+                "text": "Im Privatjet"
+            },
+            {
+                "text": "Im Ferrari"
+            }
+        ],
+        "id": 24,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/24_1564750620.jpg",
+        "text": "Wie reiste Kygo im Jahr 2015 ans Energy Air?"
+    },
+    "25": {
+        "answers": [
+            {
+                "text": "Einen Fan"
+            },
+            {
+                "text": "Sein Mami"
+            },
+            {
+                "text": "Seine Freundin"
+            }
+        ],
+        "id": 25,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/25_1564750620.jpg",
+        "text": "Wen nahm Knackeboul am Energy Air 2014 mit backstage?"
+    },
+    "26": {
+        "answers": [
+            {
+                "text": "1000"
+            },
+            {
+                "text": "1600"
+            },
+            {
+                "text": "1300"
+            }
+        ],
+        "id": 26,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/26_1564750620.jpg",
+        "text": "Wie viele Mitarbeiter sind am Energy Air im Einsatz?"
+    },
+    "27": {
+        "answers": [
+            {
+                "text": "Postkarte"
+            },
+            {
+                "text": "E-Mail"
+            },
+            {
+                "text": "SMS"
+            }
+        ],
+        "id": 27,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/27_1564750620.jpg",
+        "text": "Auf welchem Weg kann man KEINE Energy Air Tickets gewinnen?"
+    },
+    "28": {
+        "answers": [
+            {
+                "text": "...bei dem nationale und internationale Künstler auftreten."
+            },
+            {
+                "text": "...der unter freiem Himmel stattfindet."
+            },
+            {
+                "text": "...für den man Tickets nur gewinnen kann."
+            }
+        ],
+        "id": 28,
+        "media_updated_at": 1564750620,
+        "media_url": "https://cdn.energy.ch/game-web/images/questions/28_1564750620.jpg",
+        "text": "Energy Air ist der einzige Energy Event, …"
+    }
+}
