@@ -1,4 +1,5 @@
 import json
+import sys
 from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
@@ -77,7 +78,7 @@ class Operator:
     @property
     def logged_in(self):
         try:
-            self.session.check_login()
+            return False
         except URLError:
             return False
 
@@ -89,6 +90,8 @@ class Menu:
     def __init__(self):
         self.session = EnergySession()
         self.operator = Operator(self.session)
+        self.running = True
+
         self.tel = ''
 
     def menu_item(self, name: str, type: str, text: str, **kwargs) -> List[Dict]:
@@ -105,6 +108,7 @@ class Menu:
         options = {
             'Start Bot': self.start,
             'Login': self.login,
+            'Exit': self.exit,
         }
 
         if self.operator.logged_in:
@@ -115,14 +119,12 @@ class Menu:
         entries = self.menu_item('next', 'list', 'What do you want to do?', choices=options.keys())
 
         answer = prompt(entries)
-        method = options.get(answer.get('next'))
-        if not method:
-            self.exit()
-            return
+        method = options.get(answer.get('next'), self.exit)
         method()
 
     def exit(self):
         self.operator.save()
+        self.running = False
 
     def start(self):
         pass
@@ -155,13 +157,16 @@ def main():
 
     menu = Menu()
     try:
-        menu.main()
+        while menu.running:
+            menu.main()
     except KeyboardInterrupt:
         menu.operator.save()
-        print('Exit')
     except Exception as e:
         menu.operator.save()
-        raise e
+        if 'debug' in sys.argv:
+            raise e
+    finally:
+        print('Exit')
 
 
 if __name__ == "__main__":
