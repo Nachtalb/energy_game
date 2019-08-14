@@ -1,3 +1,2 @@
-from bot.game.main import EnergySession
-from bot.game.main import Operator
-from bot.game.main import Menu
+from bot.game.api import EnergySession
+from bot.game.operator import Operator

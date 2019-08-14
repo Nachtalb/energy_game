@@ -31,5 +31,5 @@ setup(
         'prompt-toolkit==1.0.14',
 
     ],
-    entry_points={'console_scripts': ['energy=bot.game.main:main']},
+    entry_points={'console_scripts': ['energy=bot.game.cli:main']},
 )
