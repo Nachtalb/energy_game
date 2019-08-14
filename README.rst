@@ -4,6 +4,23 @@ Energy Game
 Bot for `game.energy.ch <https://game.energy.ch>`_ by
 `@Nachtalb <https://github.com/Nachtalb>`_.
 
+Installation
+------------
+
+Clone the repo or download the zip and unpack.
+
+.. code-block:: shell
+
+    $ python -m venv .
+    $ source bin/activate
+    $ pytohn setup.py install
+
+Now it is installed and now you can use it with:
+
+.. code-block:: shell
+
+    $ energy
+
 Compatibility
 -------------
 
