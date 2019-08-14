@@ -5,6 +5,7 @@ import sys
 from contextlib import closing
 from datetime import datetime
 from http.cookiejar import MozillaCookieJar
+from json import JSONDecodeError
 from os import getcwd
 from pathlib import Path
 from random import choice
@@ -324,6 +325,13 @@ def main():
             menu.main()
         except HTTPError as e:
             if not debug:
+                try:
+                    data = json.load(e)
+                    if 'message' in data and 'errorName' in data:
+                        print(f'{data["errorName"]}: {data["message"]}')
+                        continue
+                except JSONDecodeError:
+                    pass
                 print('An error occurred please try again.')
                 continue
             menu.running = False
