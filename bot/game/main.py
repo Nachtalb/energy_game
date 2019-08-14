@@ -87,7 +87,7 @@ class EnergySession:
 
         url = self._build_url(endpoint, params)
 
-        encoded_data = urlencode(data).encode()
+        encoded_data = urlencode(data).encode() if data else None
         request = Request(url, method=method, data=encoded_data)
 
         request.origin_req_host = f'{self.protocol}://{self.base_url}'
@@ -96,16 +96,14 @@ class EnergySession:
 
         return json.load(self.last_response)
 
+
 class Operator:
     def __init__(self, session: EnergySession):
         self.session = session
 
     @property
     def logged_in(self):
-        try:
-            return False
-        except URLError:
-            return False
+        return self.session.expiry and self.session.expiry > datetime.utcnow()
 
     def save(self):
         self.session.cookie_jar.save()
@@ -130,16 +128,14 @@ class Menu:
         return [item]
 
     def main(self):
-        options = {
-            'Start Bot': self.start,
-            'Login': self.login,
-            'Exit': self.exit,
-        }
+        options = {'Start Bot': self.start,}
 
         if self.operator.logged_in:
-            options['Logout'] = self.logout
+            options[f'Logout (+41{self.session.phone_number})'] = self.logout
         else:
             options['Login'] = self.login
+
+        options['Exit'] = self.exit
 
         entries = self.menu_item('next', 'list', 'What do you want to do?', choices=options.keys())
 
