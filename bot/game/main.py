@@ -8,7 +8,7 @@ from http.cookiejar import MozillaCookieJar
 from os import getcwd
 from pathlib import Path
 from random import choice
-from typing import Dict, List
+from typing import Dict, Generator, List
 from urllib.error import HTTPError
 from urllib.parse import urlencode, urlunsplit
 from urllib.request import HTTPCookieProcessor, Request, build_opener
@@ -172,6 +172,14 @@ class Operator:
         won = self.session.check_questions(answers)
         return won
 
+    def run(self) -> Generator[bool, None, None]:
+        try:
+            while True:
+                yield self.run_game()
+        finally:
+            pass
+
+
 class Menu:
     def __init__(self):
         self.session = EnergySession()
@@ -223,7 +231,19 @@ class Menu:
         print('You have won!')
 
     def start(self):
-        pass
+        try:
+            print()
+            runner = self.operator.run()
+            for iteration, result in enumerate(runner, 1):
+                sys.stdout.write('\033[K')
+                print(f'Iteration {iteration}', end='\r')
+                if result:
+                    print('\nYou have won!')
+                    runner.close()
+        except KeyboardInterrupt:
+            pass
+        finally:
+            print('\nStopping')
 
     def login(self):
         tel_question = self.menu_item('tel', 'input', 'Please give me your cellphone number: +41')
